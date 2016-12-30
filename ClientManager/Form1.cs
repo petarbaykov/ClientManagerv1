@@ -20,6 +20,7 @@ namespace ClientManager
         private void функцииToolStripMenuItem_Click(object sender, EventArgs e)
         {
             int a = 5;
+            double b = 7;
         }
     }
 }
