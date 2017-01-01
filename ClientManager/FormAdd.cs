@@ -22,31 +22,93 @@ namespace ClientManager
         {
 
         }
-
+        public void clearField(TextBox t)
+        {
+            t.Clear();
+        }
+        public bool IsValidEmail(string email)
+        {
+            try
+            {
+                var mail = new System.Net.Mail.MailAddress(email);
+                return mail.Address == email;
+            }
+            catch
+            {
+                return false;
+            }
+        }
         private void button_add_Click(object sender, EventArgs e)
         {
             using (FileStream stream = new FileStream(filename, FileMode.Append))
             {
                 using (StreamWriter writer = new StreamWriter(stream))
                 {
-                    string name = textBox_name.Text.Trim();
-                    string surname = textBox_surname.Text;
-                    string egn = textBox_egn.Text;
-                    string address = textBox_address.Text;
-                    string number = textBox_number.Text;
-                    string mail = textBox_mail.Text;
-                    if (String.IsNullOrEmpty(name))
+                    
+                    try
                     {
-                        MessageBox.Show("Полето име трябва да е попълнено");
-                        return;
+                        string name = textBox_name.Text.Trim();
+                        string surname = textBox_surname.Text.Trim();
+                        int egn = int.Parse(textBox_egn.Text);
+                        string address = textBox_address.Text.Trim();
+                        int number =int.Parse(textBox_number.Text);
+                        string mail = textBox_mail.Text.Trim();
+                        if (String.IsNullOrEmpty(name))
+                        {
+                            MessageBox.Show("Полето име трябва да е попълнено");
+                            return;
+                        }
+                        if (String.IsNullOrEmpty(surname))
+                        {
+                            MessageBox.Show("Моля попълнете фамилия!");
+                            return;
+                        }
+                        if (String.IsNullOrEmpty(address))
+                        {
+                            MessageBox.Show("Моля попълнете адрес");
+                            return;
+                        }
+                        if (String.IsNullOrEmpty(name))
+                        {
+                            MessageBox.Show("Моля попълнете номер");
+                            return;
+                        }
+                        if (String.IsNullOrEmpty(name))
+                        {
+                            MessageBox.Show("Моля попълнете имейл");
+                            return;
+                        }
+                        if (egn.ToString().Length != 10)
+                        {
+                            MessageBox.Show("ЕГН трябва да е 10 цифрено");
+                            return;
+                        }
+                        if (!IsValidEmail(mail))
+                        {
+                            MessageBox.Show("Въведете валиден имейл адрес");
+                            return;
+                        }
+                        writer.Write(name + ",");
+                        writer.Write(surname + ",");
+                        writer.Write(egn + ",");
+                        writer.Write(address + ",");
+                        writer.Write(number + ",");
+                        writer.Write(mail);
+                        writer.WriteLine();
+                        
+                        var success = MessageBox.Show("Успешно добавихте клиент със следните данни \n Име: "+name+" "+surname+" \n ЕГН: "+egn+" \n Адрес: "+address+" \n Номер: "+number+" \n Имейл: "+mail);
+                        clearField(textBox_address);
+                        clearField(textBox_name);
+                        clearField(textBox_surname);
+                        clearField(textBox_egn);
+                        clearField(textBox_mail);
+                        clearField(textBox_number);
                     }
-                    writer.Write(name + ",");
-                    writer.Write(surname + ",");
-                    writer.Write(egn + ",");
-                    writer.Write(address + ",");
-                    writer.Write( number+ ",");
-                    writer.Write(mail);
-                    writer.WriteLine();
+                    catch (FormatException)
+                    {
+                        MessageBox.Show("Невалиден формат на информацията");
+                    }
+                   
                 }
             }
         }
