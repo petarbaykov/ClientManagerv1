@@ -10,17 +10,27 @@ using System.Windows.Forms;
 
 namespace ClientManager
 {
-    public partial class Form1 : Form
+    public partial class Main : Form
     {
-        public Form1()
+        public Main()
         {
             InitializeComponent();
         }
 
         private void функцииToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            int a = 5;
-            double b = 7;
+            
+        }
+
+        private void add_menu_Click(object sender, EventArgs e)
+        {
+            FormAdd addform = new FormAdd();
+        }
+
+        private void button_add_Click(object sender, EventArgs e)
+        {
+            FormAdd addform = new FormAdd();
+            addform.Show();
         }
     }
 }
