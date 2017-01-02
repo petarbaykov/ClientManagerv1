@@ -20,9 +20,25 @@ namespace ClientManager
         }
         private static string[] data;
         private static string[] sub_data;
+        private static string name;
+        private static int count_results = 0;
+        public void showResults(Dictionary<int, Dictionary<string, string>> dict)
+        {
+            listBox_results.Items.Clear();
+            for (int i = 0; i < dict.Count; i++)
+            {
+                if (name == dict[i]["name"] + " " + dict[i]["surname"] ||
+                    name == dict[i]["name"]|| name ==  dict[i]["surname"])
+                {
+                    listBox_results.Items.Add(dict[i]["name"] + " - " + dict[i]["surname"]);
+                    count_results++;
+                }
+            }
+        }
         private void button_search_Click(object sender, EventArgs e)
         {
-            string name = textBox_search_name.Text.Trim(new Char[] { ',',' ','-'});
+            count_results = 0;
+            name = textBox_search_name.Text.Trim(new Char[] { ',',' ','-'});
             using (FileStream stream = new FileStream(Main.filename,FileMode.OpenOrCreate))
             {
                 using (StreamReader reader = new StreamReader(stream))
@@ -51,14 +67,14 @@ namespace ClientManager
                 allClients[i].Add("number", sub_data[5]);
                 allClients[i].Add("mail", sub_data[6]);
             }
+            
+            showResults(allClients);
+            label_results.Text = "Намерени резултати:" + count_results.ToString();
+        }
 
-            for (int i = 0; i < allClients.Count; i++)
-            {
-                if(name == allClients[i]["name"] +" " +  allClients[i]["surname"])
-                {
-                    MessageBox.Show("Match");
-                }
-            }
+        private void SearchForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

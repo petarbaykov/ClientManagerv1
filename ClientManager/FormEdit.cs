@@ -156,9 +156,9 @@ namespace ClientManager
                     {
                         line = reader.ReadLine();
                         string[] lineArr = line.Split(',');
-                        string cur_id = lineArr[0];
+                        string current_id = lineArr[0];
                         
-                        if (edit_id != cur_id)
+                        if (edit_id != current_id)
                         {
                             edit_line++;
                         }
