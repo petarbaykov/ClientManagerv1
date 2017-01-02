@@ -18,7 +18,7 @@ namespace ClientManager
             InitializeComponent();
             getClients();
         }
-        string filename = "data.txt";
+        public static string filename = "data.txt";
         List<string> clients = new List<string>();
         List<string> data = new List<string>();
         public void fillList(List<string> l)

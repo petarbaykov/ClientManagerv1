@@ -57,6 +57,7 @@
             this.button_search.TabIndex = 2;
             this.button_search.Text = "Търси";
             this.button_search.UseVisualStyleBackColor = true;
+            this.button_search.Click += new System.EventHandler(this.button_search_Click);
             // 
             // SearchForm
             // 
