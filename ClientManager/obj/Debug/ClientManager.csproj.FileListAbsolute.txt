@@ -9,3 +9,4 @@ c:\users\petar\documents\visual studio 2015\Projects\ClientManager\ClientManager
 C:\Users\Petar\documents\visual studio 2015\Projects\ClientManager\ClientManager\obj\Debug\ClientManager.Main.resources
 C:\Users\Petar\documents\visual studio 2015\Projects\ClientManager\ClientManager\obj\Debug\ClientManager.FormAdd.resources
 C:\Users\Petar\documents\visual studio 2015\Projects\ClientManager\ClientManager\obj\Debug\ClientManager.FormEdit.resources
+C:\Users\Petar\documents\visual studio 2015\Projects\ClientManager\ClientManager\obj\Debug\ClientManager.SearchForm.resources

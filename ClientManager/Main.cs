@@ -82,5 +82,11 @@ namespace ClientManager
         {
 
         }
+
+        private void searchToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SearchForm searchform = new SearchForm();
+            searchform.Show();
+        }
     }
 }

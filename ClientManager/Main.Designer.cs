@@ -31,7 +31,7 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.AddToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.EditToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.търсенеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.searchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.изтриванеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.извличанеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.button_add = new System.Windows.Forms.Button();
@@ -44,7 +44,7 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.AddToolStripMenuItem,
             this.EditToolStripMenuItem,
-            this.търсенеToolStripMenuItem,
+            this.searchToolStripMenuItem,
             this.изтриванеToolStripMenuItem,
             this.извличанеToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
@@ -67,11 +67,12 @@
             this.EditToolStripMenuItem.Text = "Редактиране";
             this.EditToolStripMenuItem.Click += new System.EventHandler(this.EditToolStripMenuItem_Click);
             // 
-            // търсенеToolStripMenuItem
+            // searchToolStripMenuItem
             // 
-            this.търсенеToolStripMenuItem.Name = "търсенеToolStripMenuItem";
-            this.търсенеToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
-            this.търсенеToolStripMenuItem.Text = "Търсене";
+            this.searchToolStripMenuItem.Name = "searchToolStripMenuItem";
+            this.searchToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
+            this.searchToolStripMenuItem.Text = "Търсене";
+            this.searchToolStripMenuItem.Click += new System.EventHandler(this.searchToolStripMenuItem_Click);
             // 
             // изтриванеToolStripMenuItem
             // 
@@ -129,7 +130,7 @@
         private System.Windows.Forms.ToolStripMenuItem AddToolStripMenuItem;
         private System.Windows.Forms.Button button_add;
         private System.Windows.Forms.ToolStripMenuItem EditToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem търсенеToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem searchToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem изтриванеToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem извличанеToolStripMenuItem;
         private System.Windows.Forms.ListBox listBox_clients;

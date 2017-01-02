@@ -1,7 +1,1 @@
-0,Петър,Байков,9701077647,Казанлък, ул. Цанко Минков 54,897651615,petbaik26@gmail.com
-1,Иван,Иванов,9501267594,Пловдив, бул. Руски 15,43176528,ivan@abv.bg
-1,asdas,asdsad,1234567895,asdsad,132,as@ab.n
-2,asd,asd,1234567895,asd,45,asd@bv.b
-1,asd,asd,1234567891,zxc,21,as@abv.b
-3,asd,asdsa,1234567891,asd,45,asd@bv.bg
-4,a,asd,1234567896,asd,45,asd@afd.bg
+0,asd,asd,1234567895,sad,465,asd@asd.gv

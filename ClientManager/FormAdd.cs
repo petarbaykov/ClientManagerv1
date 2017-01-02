@@ -90,6 +90,7 @@ namespace ClientManager
                             MessageBox.Show("Въведете валиден имейл адрес");
                             return;
                         }
+                        //string input = count + "," + name + "," + surname + "," + egn + "," + address + "," + number + "," + mail + "\n";
                         writer.Write(count + ",");
                         writer.Write(name + ",");
                         writer.Write(surname + ",");
@@ -116,7 +117,7 @@ namespace ClientManager
                 }
             }
         }
-
+        
         private void FormAdd_Load(object sender, EventArgs e)
         {
             using (FileStream stream = new FileStream(filename,FileMode.OpenOrCreate))
