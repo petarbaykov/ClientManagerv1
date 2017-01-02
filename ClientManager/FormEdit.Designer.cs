@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button_add = new System.Windows.Forms.Button();
+            this.button_edit = new System.Windows.Forms.Button();
             this.label_mail = new System.Windows.Forms.Label();
             this.textBox_mail = new System.Windows.Forms.TextBox();
             this.textBox_number = new System.Windows.Forms.TextBox();
@@ -44,14 +44,15 @@
             this.label_add = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // button_add
+            // button_edit
             // 
-            this.button_add.Location = new System.Drawing.Point(16, 221);
-            this.button_add.Name = "button_add";
-            this.button_add.Size = new System.Drawing.Size(256, 23);
-            this.button_add.TabIndex = 27;
-            this.button_add.Text = "Добавяне";
-            this.button_add.UseVisualStyleBackColor = true;
+            this.button_edit.Location = new System.Drawing.Point(16, 221);
+            this.button_edit.Name = "button_edit";
+            this.button_edit.Size = new System.Drawing.Size(256, 23);
+            this.button_edit.TabIndex = 27;
+            this.button_edit.Text = "Редактиране";
+            this.button_edit.UseVisualStyleBackColor = true;
+            this.button_edit.Click += new System.EventHandler(this.button_edit_Click);
             // 
             // label_mail
             // 
@@ -165,7 +166,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(290, 259);
-            this.Controls.Add(this.button_add);
+            this.Controls.Add(this.button_edit);
             this.Controls.Add(this.label_mail);
             this.Controls.Add(this.textBox_mail);
             this.Controls.Add(this.textBox_number);
@@ -189,7 +190,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button_add;
+        private System.Windows.Forms.Button button_edit;
         private System.Windows.Forms.Label label_mail;
         private System.Windows.Forms.TextBox textBox_mail;
         private System.Windows.Forms.TextBox textBox_number;

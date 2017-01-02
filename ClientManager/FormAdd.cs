@@ -18,16 +18,17 @@ namespace ClientManager
             InitializeComponent();
         }
         string filename = "data.txt";
-        int count;
+        public static List<int> ids = new List<int>();
+        public static int count;
         private void label1_Click(object sender, EventArgs e)
         {
 
         }
-        public void clearField(TextBox t)
+        public static void clearField(TextBox t)
         {
             t.Clear();
         }
-        public bool IsValidEmail(string email)
+        public static bool IsValidEmail(string email)
         {
             try
             {
@@ -51,7 +52,7 @@ namespace ClientManager
                         string name = textBox_name.Text.Trim();
                         string surname = textBox_surname.Text.Trim();
                         long egn = long.Parse(textBox_egn.Text);
-                        string address = textBox_address.Text.Trim();
+                        string address = textBox_address.Text.Trim(new Char[] { ',','.'});
                         long number =long.Parse(textBox_number.Text);
                         string mail = textBox_mail.Text.Trim();
                         if (String.IsNullOrEmpty(name))
@@ -123,9 +124,13 @@ namespace ClientManager
                 using (StreamReader reader = new StreamReader(stream))
                 {
                     string lastRow = string.Empty;
+                    
                     while (!reader.EndOfStream)
                     {
                         lastRow = reader.ReadLine();
+                        string[] splitRow = lastRow.Split(',');
+                        ids.Add(int.Parse(splitRow[0]));
+
                     }
                     if (new FileInfo(filename).Length == 0)
                     {
@@ -134,7 +139,10 @@ namespace ClientManager
                     else
                     {
                         string[] dataLastRow = lastRow.Split(',');
-                        int index = int.Parse(dataLastRow[0]);
+                        //int index = int.Parse(dataLastRow[0]);
+                        ids.Sort();
+                        ids.Reverse();
+                        int index = ids[0];
                         count = index + 1;
                     }
                 }
