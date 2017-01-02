@@ -18,6 +18,7 @@ namespace ClientManager
             InitializeComponent();
         }
         string filename = "data.txt";
+        int count;
         private void label1_Click(object sender, EventArgs e)
         {
 
@@ -49,9 +50,9 @@ namespace ClientManager
                     {
                         string name = textBox_name.Text.Trim();
                         string surname = textBox_surname.Text.Trim();
-                        int egn = int.Parse(textBox_egn.Text);
+                        long egn = long.Parse(textBox_egn.Text);
                         string address = textBox_address.Text.Trim();
-                        int number =int.Parse(textBox_number.Text);
+                        long number =long.Parse(textBox_number.Text);
                         string mail = textBox_mail.Text.Trim();
                         if (String.IsNullOrEmpty(name))
                         {
@@ -88,6 +89,7 @@ namespace ClientManager
                             MessageBox.Show("Въведете валиден имейл адрес");
                             return;
                         }
+                        writer.Write(count + ",");
                         writer.Write(name + ",");
                         writer.Write(surname + ",");
                         writer.Write(egn + ",");
@@ -103,12 +105,38 @@ namespace ClientManager
                         clearField(textBox_egn);
                         clearField(textBox_mail);
                         clearField(textBox_number);
+                        count += 1;
                     }
                     catch (FormatException)
                     {
                         MessageBox.Show("Невалиден формат на информацията");
                     }
                    
+                }
+            }
+        }
+
+        private void FormAdd_Load(object sender, EventArgs e)
+        {
+            using (FileStream stream = new FileStream(filename,FileMode.OpenOrCreate))
+            {
+                using (StreamReader reader = new StreamReader(stream))
+                {
+                    string lastRow = string.Empty;
+                    while (!reader.EndOfStream)
+                    {
+                        lastRow = reader.ReadLine();
+                    }
+                    if (new FileInfo(filename).Length == 0)
+                    {
+                        count = 0;
+                    }
+                    else
+                    {
+                        string[] dataLastRow = lastRow.Split(',');
+                        int index = int.Parse(dataLastRow[0]);
+                        count = index + 1;
+                    }
                 }
             }
         }

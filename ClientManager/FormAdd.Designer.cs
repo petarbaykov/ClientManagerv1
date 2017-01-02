@@ -161,7 +161,7 @@
             this.button_add.UseVisualStyleBackColor = true;
             this.button_add.Click += new System.EventHandler(this.button_add_Click);
             // 
-            // Add
+            // FormAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -180,8 +180,9 @@
             this.Controls.Add(this.textBox_name);
             this.Controls.Add(this.label_name);
             this.Controls.Add(this.label_add);
-            this.Name = "Add";
+            this.Name = "FormAdd";
             this.Text = "Добавяне на нов клиент";
+            this.Load += new System.EventHandler(this.FormAdd_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
