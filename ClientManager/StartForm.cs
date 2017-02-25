@@ -51,7 +51,8 @@ namespace ClientManager
 
         private void информацияToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
-
+            Info info = new Info();
+            info.Show(); 
         }
 
         private void metroButton1_Click(object sender, EventArgs e)

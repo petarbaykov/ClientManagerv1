@@ -38,6 +38,7 @@
             this.изтриванеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.извличанеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.metroTile1 = new MetroFramework.Controls.MetroTile();
+            this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -56,15 +57,15 @@
             this.listBox_clients.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.listBox_clients.FormattingEnabled = true;
             this.listBox_clients.ItemHeight = 20;
-            this.listBox_clients.Location = new System.Drawing.Point(71, 177);
+            this.listBox_clients.Location = new System.Drawing.Point(36, 166);
             this.listBox_clients.Name = "listBox_clients";
-            this.listBox_clients.Size = new System.Drawing.Size(294, 144);
+            this.listBox_clients.Size = new System.Drawing.Size(317, 244);
             this.listBox_clients.TabIndex = 6;
             this.listBox_clients.SelectedIndexChanged += new System.EventHandler(this.listBox_clients_SelectedIndexChanged);
             // 
             // button_add
             // 
-            this.button_add.Location = new System.Drawing.Point(119, 350);
+            this.button_add.Location = new System.Drawing.Point(380, 365);
             this.button_add.Name = "button_add";
             this.button_add.Size = new System.Drawing.Size(157, 45);
             this.button_add.TabIndex = 5;
@@ -138,14 +139,31 @@
             this.metroTile1.UseSelectable = true;
             this.metroTile1.UseTileImage = true;
             // 
+            // metroPanel1
+            // 
+            this.metroPanel1.AutoScroll = true;
+            this.metroPanel1.HorizontalScrollbar = true;
+            this.metroPanel1.HorizontalScrollbarBarColor = true;
+            this.metroPanel1.HorizontalScrollbarHighlightOnWheel = false;
+            this.metroPanel1.HorizontalScrollbarSize = 10;
+            this.metroPanel1.Location = new System.Drawing.Point(385, 334);
+            this.metroPanel1.Name = "metroPanel1";
+            this.metroPanel1.Size = new System.Drawing.Size(32, 25);
+            this.metroPanel1.TabIndex = 9;
+            this.metroPanel1.VerticalScrollbar = true;
+            this.metroPanel1.VerticalScrollbarBarColor = true;
+            this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
+            this.metroPanel1.VerticalScrollbarSize = 10;
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(612, 470);
+            this.Controls.Add(this.metroPanel1);
             this.Controls.Add(this.metroTile1);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.listBox_clients);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.button_add);
             this.Controls.Add(this.menuStrip1);
             this.Name = "Main";
@@ -170,5 +188,6 @@
         private System.Windows.Forms.ToolStripMenuItem изтриванеToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem извличанеToolStripMenuItem;
         private MetroFramework.Controls.MetroTile metroTile1;
+        private MetroFramework.Controls.MetroPanel metroPanel1;
     }
 }

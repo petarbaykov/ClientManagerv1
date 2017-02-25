@@ -113,6 +113,26 @@ namespace ClientManager.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _1487445882_icon_111_search {
+            get {
+                object obj = ResourceManager.GetObject("1487445882_icon-111-search", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _1487446389_arrow_right_circle {
+            get {
+                object obj = ResourceManager.GetObject("_1487446389_arrow_right_circle", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap login_background {
             get {
                 object obj = ResourceManager.GetObject("login-background", resourceCulture);

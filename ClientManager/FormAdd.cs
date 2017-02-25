@@ -147,6 +147,7 @@ namespace ClientManager
                         int index = ids[0];
                         count = index + 1;
                     }
+                    
                 }
             }
         }
@@ -168,37 +169,39 @@ namespace ClientManager
                         string mail = textBox_mail.Text.Trim();
                         if (String.IsNullOrEmpty(name))
                         {
-                            MessageBox.Show("Полето име трябва да е попълнено");
+
+                            MetroFramework.MetroMessageBox.Show(this, "Полето име трябва да е попълнено", "Грешка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
                         if (String.IsNullOrEmpty(surname))
                         {
-                            MessageBox.Show("Моля попълнете фамилия!");
+                            MetroFramework.MetroMessageBox.Show(this, "Моля попълнете фамилия!", "Грешка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
                         if (String.IsNullOrEmpty(address))
                         {
-                            MessageBox.Show("Моля попълнете адрес");
+                            MetroFramework.MetroMessageBox.Show(this, "Моля попълнете адрес", "Грешка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
                         if (String.IsNullOrEmpty(name))
                         {
-                            MessageBox.Show("Моля попълнете номер");
+                            MetroFramework.MetroMessageBox.Show(this, "Моля попълнете номер", "Грешка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
                         if (String.IsNullOrEmpty(name))
                         {
-                            MessageBox.Show("Моля попълнете имейл");
+                            MetroFramework.MetroMessageBox.Show(this, "Моля попълнете имейл", "Грешка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
                         if (egn.ToString().Length != 10)
                         {
-                            MessageBox.Show("ЕГН трябва да е 10 цифрено");
+                            MetroFramework.MetroMessageBox.Show(this, "ЕГН трябва да е 10 цифрено", "Грешка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
                         if (!IsValidEmail(mail))
                         {
-                            MessageBox.Show("Въведете валиден имейл адрес");
+                            MetroFramework.MetroMessageBox.Show(this, "Въведете валиден имейл адрес", "Грешка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                             return;
                         }
                         //string input = count + "," + name + "," + surname + "," + egn + "," + address + "," + number + "," + mail + "\n";
@@ -210,8 +213,8 @@ namespace ClientManager
                         writer.Write(number + ",");
                         writer.Write(mail);
                         writer.WriteLine();
-
-                        var success = MessageBox.Show("Успешно добавихте клиент със следните данни \n Име: " + name + " " + surname + " \n ЕГН: " + egn + " \n Адрес: " + address + " \n Номер: " + number + " \n Имейл: " + mail);
+                        var success = "Успешно добавихте клиент със следните данни \n Име: " + name + " " + surname + " \n ЕГН: " + egn + " \n Адрес: " + address + " \n Номер: " + number + " \n Имейл: " + mail;
+                       DialogResult result =  MetroFramework.MetroMessageBox.Show(this,success,"Успешно добавяне",MessageBoxButtons.OK,MessageBoxIcon.Question);
                         clearField(textBox_address);
                         clearField(textBox_name);
                         clearField(textBox_surname);
@@ -219,10 +222,19 @@ namespace ClientManager
                         clearField(textBox_mail);
                         clearField(textBox_number);
                         count += 1;
+                        string data = count + "," + name + "," + surname + "," + egn + "," + address + "," + number + "," + mail;
+                        if(result == DialogResult.OK)
+                        {
+                            Main main = new Main();
+                            main.client = data;
+                            this.DialogResult = DialogResult.OK;
+                            this.Close();
+                        }
+                       
                     }
                     catch (FormatException)
                     {
-                        MessageBox.Show("Невалиден формат на информацията");
+                        MetroFramework.MetroMessageBox.Show(this,"Невалиден формат на информацията или непопълнени всички полета", "Грешка", MessageBoxButtons.OK,MessageBoxIcon.Error);
                     }
 
                 }
@@ -232,6 +244,12 @@ namespace ClientManager
         private void metroButton1_Click(object sender, EventArgs e)
         {
             button_add_Click_1(sender, e);
+            
+        }
+
+        private void FormAdd_Load_1(object sender, EventArgs e)
+        {
+            FormAdd_Load(sender, e);
         }
     }
 }

@@ -65,7 +65,8 @@ namespace ClientManager
                             textBox_surname.Text = lineArr[2];
                             textBox_egn.Text = lineArr[3];
                             textBox_address.Text = lineArr[4];
-                            textBox_mail.Text = lineArr[5];
+                            textBox_number.Text = lineArr[5];
+                            textBox_mail.Text = lineArr[6];
 
                         }
 
@@ -87,37 +88,40 @@ namespace ClientManager
                 string mail = textBox_mail.Text.Trim();
                 if (String.IsNullOrEmpty(name))
                 {
-                    MessageBox.Show("Полето име трябва да е попълнено");
+                   
+                    MetroFramework.MetroMessageBox.Show(this, "Полето име трябва да е попълнено", "Грешка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
                 if (String.IsNullOrEmpty(surname))
                 {
-                    MessageBox.Show("Моля попълнете фамилия!");
+                    MetroFramework.MetroMessageBox.Show(this, "Моля попълнете фамилия", "Грешка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                   
                     return;
                 }
                 if (String.IsNullOrEmpty(address))
                 {
-                    MessageBox.Show("Моля попълнете адрес");
+                   
+                    MetroFramework.MetroMessageBox.Show(this, "Моля попълнете адрес", "Грешка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
                 if (String.IsNullOrEmpty(name))
                 {
-                    MessageBox.Show("Моля попълнете номер");
+                    MetroFramework.MetroMessageBox.Show(this, "Моля попълнете номер", "Грешка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
                 if (String.IsNullOrEmpty(name))
                 {
-                    MessageBox.Show("Моля попълнете имейл");
+                    MetroFramework.MetroMessageBox.Show(this, "Моля попълнете имейл", "Грешка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
                 if (egn.ToString().Length != 10)
                 {
-                    MessageBox.Show("ЕГН трябва да е 10 цифрено");
+                    MetroFramework.MetroMessageBox.Show(this, "ЕГН трябва да е 10 цифрено", "Грешка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
                 if (!FormAdd.IsValidEmail(mail))
                 {
-                    MessageBox.Show("Въведете валиден имейл адрес");
+                    MetroFramework.MetroMessageBox.Show(this, "Въведете валиден имейл адрес", "Грешка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
                 string input = edit_id + "," + name + "," + surname + "," + egn + "," + address + "," + number + "," + mail + "\n";
@@ -131,7 +135,8 @@ namespace ClientManager
                  writer.Write(mail);
                  writer.WriteLine();*/
                 lineChanger(input, filename, edit_line);
-                var success = MessageBox.Show("Успешно редактирахте клиент със следните данни \n Име: " + name + " " + surname + " \n ЕГН: " + egn + " \n Адрес: " + address + " \n Номер: " + number + " \n Имейл: " + mail);
+                var success = "Успешно редактирахте клиент със следните данни \n Име: " + name + " " + surname + " \n ЕГН: " + egn + " \n Адрес: " + address + " \n Номер: " + number + " \n Имейл: " + mail;
+                MetroFramework.MetroMessageBox.Show(this, success, "Успешно добавяне", MessageBoxButtons.OK, MessageBoxIcon.Question);
                 /* FormAdd.clearField(textBox_address);
                  FormAdd.clearField(textBox_name);
                  FormAdd.clearField(textBox_surname);
@@ -189,6 +194,7 @@ namespace ClientManager
                     rowData[line_to_edit - 1] = newText;
                 }
             }
+           
             using (FileStream stream = new FileStream(filename, FileMode.Create))
             {
                 using (StreamWriter writer = new StreamWriter(stream))
@@ -196,7 +202,9 @@ namespace ClientManager
                     foreach (string item in rowData)
                     {
                         writer.WriteLine(item);
+
                     }
+                   
                 }
             }
         }
@@ -204,6 +212,16 @@ namespace ClientManager
         private void button_edit_Click_1(object sender, EventArgs e)
         {
             button_edit_Click(sender, e);
+        }
+
+        private void FormEdit_Load_1(object sender, EventArgs e)
+        {
+            FormEdit_Load(sender,e);
+        }
+
+        private void metroButton1_Click(object sender, EventArgs e)
+        {
+            button_edit_Click_1(sender, e);
         }
     }
 }

@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MetroFramework.Forms;
 using System.IO;
+using ClientManager.Properties;
 
 namespace ClientManager
 {
@@ -22,12 +23,13 @@ namespace ClientManager
         private static string[] sub_data;
         private static string name;
         private static int count_results = 0;
-        
+        private static int countTimer = 0;
         public void showResults(Dictionary<int, Dictionary<string, string>> dict)
         {
-            var top = metroPanel1.Top;
-            var left = 50;
+            var top = 0;
+            var left = 0;
             listBox_results.Items.Clear();
+            Image image = Resources._1487446389_arrow_right_circle;
             for (int i = 0; i < dict.Count; i++)
             {
                 if (name == dict[i]["name"] + " " + dict[i]["surname"] ||
@@ -35,11 +37,12 @@ namespace ClientManager
                 {
                     listBox_results.Items.Add(dict[i]["name"] + " - " + dict[i]["surname"]);
                     MetroFramework.Controls.MetroTile tile = new MetroFramework.Controls.MetroTile();
-                    tile.Text = dict[i]["name"];
+                    tile.Text = dict[i]["name"] + " " + dict[i]["surname"];
                     tile.Left = left;
                     tile.Top = top;
-                    tile.AutoSize = true;
-                    this.Controls.Add(tile);
+                    tile.Width = metroPanel1.Width / 2 + 50;
+                    tile.Image = image;
+                    metroPanel1.Controls.Add(tile);
                     top += tile.Height + 2;
                     count_results++;
                 }
@@ -84,7 +87,24 @@ namespace ClientManager
 
         private void metroButton1_Click(object sender, EventArgs e)
         {
-            button_search_Click(sender, e);
+            metroPanel1.Controls.Clear();
+            timer1.Stop();
+            listBox_results.Text = "";
+            metroProgressSpinner1.Visible = false;
+            timer1.Start();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            metroProgressSpinner1.Visible = true;
+            countTimer++;
+            if(countTimer == 5)
+            {
+                timer1.Stop();
+                metroProgressSpinner1.Visible = false;
+                button_search_Click(sender, e);
+                countTimer = 0;
+            }
         }
     }
 }
